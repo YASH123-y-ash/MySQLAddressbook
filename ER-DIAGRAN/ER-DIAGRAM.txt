@@ -1,0 +1,67 @@
+UC12: query for Normalization
+--------------------------------
+//creating person data table
+------------------------------
+>create table Person_Info
+>(
+>personID int primary key,
+>firstName varchar(150) ,
+>lastName varchar(150),
+>address varchar(150),
+>city varchar(150),
+>zip int(10),
+>state char(50),
+>PhoneNumber bigint(20),
+>Email varchar(20)
+>);
+>select * from Person_Info;
+
+//inserting records
+--------------------
+INSERT INTO person_info VALUES(1,'yash','wardhan','purnia','purnia',56744,'Bihar',8824223456,'ward@gmail.com');
+INSERT INTO person_info VALUES(2,'aman','kumar','madhubani','patna',52744,'bihar',8124223456,'aman@gmail.com');
+INSERT INTO person_info VALUES(3,'amit','kumar','jkroad','gaya',55744,'bihar',8123223456,'amit@gmail.com');
+INSERT INTO person_info VALUES(4,'prince','kumar','skroad','nalanda',55743,'bihar',8123221456,'pk@gmail.com');
+select * from Person_Info;
+
+
+//creating person_type Table
+-----------------------------
+
+CREATE TABLE person_type
+(
+type_id INT PRIMARY KEY,
+type_name VARCHAR(50)
+);
+describe person_type;
+
+//inserting records
+----------------------
+INSERT INTO person_type values(10,'family');
+INSERT INTO person_type values(20,'family');
+INSERT INTO person_type values(30,'friend');
+INSERT INTO person_type values(40,'fiend');
+select * from person_type;
+
+//creating type table
+---------------------
+create table Type
+(
+personID INT,
+FOREIGN KEY(personID) REFERENCES person_info(personID),
+type_id INT,
+FOREIGN KEY(type_id) references person_type(type_id)
+);
+//inserting records
+--------------------
+insert into Type values(1,10);
+insert into Type values(2,20);
+insert into Type values(3,30);
+insert into Type values(4,40);
+select * from Type;
+
+UC13:- query for ER blocks
+---------------------------
+select * from Person_Info where city='purnea' OR state='bihar';
+select count(state) from Person_Info ;
+select count(city) from person_Info;
